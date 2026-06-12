@@ -56,7 +56,7 @@ export function Header() {
             <NavigationMenuList className="gap-2">
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent h-9 px-3 text-[18px] font-medium text-zinc-800 hover:text-zinc-900 data-[state=open]:text-zinc-900">
-                  Company
+                  Company Profile
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] bg-white">
@@ -74,7 +74,7 @@ export function Header() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent h-9 px-3 text-[18px] font-medium text-zinc-800 hover:text-zinc-900 data-[state=open]:text-zinc-900">
-                  Services
+                  Our Services
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 bg-white">
@@ -88,38 +88,11 @@ export function Header() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent h-9 px-3 text-[18px] font-medium text-zinc-800 hover:text-zinc-900 data-[state=open]:text-zinc-900">
-                  Products
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[400px] gap-3 p-4 bg-white">
-                    <ListItem href="#" title="Vehicle ID System">
-                      Advanced vehicle identification tracking.
-                    </ListItem>
-                    <ListItem href="#" title="Payment Processing">
-                      Secure payment gateway integration.
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
                 <Link href="#" legacyBehavior passHref>
                   <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent h-9 px-3 text-[18px] text-zinc-800 hover:text-zinc-900 font-medium")}>
-                    Hire
+                    We Are Hiring
                   </NavigationMenuLink>
                 </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="#" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent h-9 px-3 text-[18px] text-zinc-800 hover:text-zinc-900 font-medium")}>
-                    Contact
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem className="ml-4">
-
-                  Get a Quote
-
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -135,17 +108,9 @@ export function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white">
               <nav className="flex flex-col gap-6 mt-10">
                 <div className="flex flex-col space-y-4">
-                  <span className="font-semibold text-lg text-zinc-900">Company</span>
-                  <span className="font-semibold text-lg text-zinc-900">Services</span>
-                  <span className="font-semibold text-lg text-zinc-900">Products</span>
-                  <Link href="#" className="font-semibold text-lg text-zinc-900">Hire</Link>
-                  <Link href="#" className="font-semibold text-lg text-zinc-900">Contact</Link>
-                </div>
-                <div className="mt-8">
-                  <Button className="w-full rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-6 text-base group shadow-md transition-all">
-                    Get a Quote
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
+                  <span className="font-semibold text-lg text-zinc-900">Company Profile</span>
+                  <span className="font-semibold text-lg text-zinc-900">Our Services</span>
+                  <Link href="#" className="font-semibold text-lg text-zinc-900">We Are Hiring</Link>
                 </div>
               </nav>
             </SheetContent>
