@@ -1,11 +1,12 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section className="relative min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden bg-white px-4">
+    <section className="relative min-h-[calc(100vh-96px)] flex items-center justify-center overflow-hidden bg-white px-4">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -19,27 +20,24 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto flex flex-col items-center text-center -mt-16">
-        <h1 className="max-w-4xl font-extrabold tracking-tight text-5xl md:text-6xl lg:text-7xl xl:text-[80px] leading-[1.1] mb-6">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 block mb-2">
+      <div className="relative z-10 container mx-auto flex flex-col items-center text-center px-4 max-w-5xl -mt-10">
+        {/* Subtle top pill */}
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50/80 border border-blue-100 text-blue-700 text-sm font-semibold mb-8 animate-fade-in shadow-sm backdrop-blur-sm">
+          <span className="flex h-2 w-2 rounded-full bg-blue-600 animate-pulse"></span>
+          Shaping the Future of Technology
+        </div>
+        
+        <h1 className="font-black tracking-tight text-5xl md:text-7xl lg:text-8xl leading-[1.05] mb-8 text-slate-900">
+          <span className="block mb-2">
+            Welcome to
+          </span>
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-500 block">
             Devarya Solutions
           </span>
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 block">
+          <span className="text-xl md:text-2xl lg:text-3xl text-slate-500 block font-black tracking-[0.2em] uppercase mt-4">
             Private Limited
           </span>
         </h1>
-
-        <p className="max-w-[700px] text-zinc-600 text-lg md:text-xl font-medium leading-relaxed mb-10 mx-auto">
-          We deliver scalable, secure, and innovative technology solutions that streamline operations, vehicle identification, payment processing, and transportation infrastructure management.
-        </p>
-
-        <Button 
-          size="lg" 
-          className="rounded-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold px-8 py-7 text-lg group shadow-lg shadow-blue-500/25 transition-all duration-300 hover:scale-105"
-        >
-          Get a Quote
-          <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-        </Button>
       </div>
     </section>
   );
