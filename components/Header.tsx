@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { 
   Menu, ArrowRight, Smartphone, Globe, Gamepad2, Palette, Hourglass,
   Bot, Apple, RefreshCw, Rocket, 
@@ -333,6 +334,7 @@ const hireItems = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [isQuoteOpen, setIsQuoteOpen] = React.useState(false);
   const [mobileCompanyOpen, setMobileCompanyOpen] = React.useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = React.useState(false);
@@ -427,7 +429,12 @@ export function Header() {
 
                 {/* Services Menu */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent h-10 px-3.5 text-[20px] font-semibold text-zinc-800 hover:text-blue-600 data-[state=open]:text-blue-600 transition-colors duration-200">
+                  <NavigationMenuTrigger className={cn(
+                    "bg-transparent h-10 px-3.5 text-[20px] font-semibold transition-colors duration-200",
+                    pathname.startsWith("/services") 
+                      ? "text-blue-600 hover:text-blue-700 data-[state=open]:text-blue-700 font-bold" 
+                      : "text-zinc-800 hover:text-blue-600 data-[state=open]:text-blue-600"
+                  )}>
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -435,13 +442,28 @@ export function Header() {
                       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {servicesItems.map((item, idx) => {
                           const IconComponent = item.icon;
+                          const isActive = pathname === item.href;
                           return (
                             <li key={idx}>
-                              <Link href={item.href} className="flex items-center gap-3 hover:bg-slate-50 hover:text-blue-600 rounded-xl p-3 transition-all text-[17px] text-zinc-700 font-semibold group w-full">
-                                <IconComponent className="w-5 h-5 text-zinc-400 group-hover:text-blue-600 transition-colors shrink-0" />
+                              <Link 
+                                href={item.href} 
+                                className={cn(
+                                  "flex items-center gap-3 rounded-xl p-3 transition-all text-[17px] font-semibold group w-full",
+                                  isActive 
+                                    ? "bg-blue-50 text-blue-600" 
+                                    : "text-zinc-700 hover:bg-slate-50 hover:text-blue-600"
+                                )}
+                              >
+                                <IconComponent className={cn(
+                                  "w-5 h-5 shrink-0 transition-colors",
+                                  isActive ? "text-blue-600" : "text-zinc-400 group-hover:text-blue-600"
+                                )} />
                                 <div className="flex flex-col">
                                   <span>{item.title}</span>
-                                  <span className="text-xs text-zinc-400 font-normal">{item.description}</span>
+                                  <span className={cn(
+                                    "text-xs font-normal",
+                                    isActive ? "text-blue-500/80" : "text-zinc-400"
+                                  )}>{item.description}</span>
                                 </div>
                               </Link>
                             </li>
@@ -577,7 +599,10 @@ export function Header() {
                   <div className="border-b border-zinc-100 pb-3">
                     <button 
                       onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                      className="flex items-center justify-between w-full font-bold text-lg text-zinc-800 py-2"
+                      className={cn(
+                        "flex items-center justify-between w-full font-bold text-lg py-2",
+                        pathname.startsWith("/services") ? "text-blue-600" : "text-zinc-800"
+                      )}
                     >
                       <span>Services</span>
                       <ChevronDown className={cn("w-5 h-5 text-zinc-500 transition-transform duration-200", mobileServicesOpen && "rotate-180")} />
@@ -586,10 +611,20 @@ export function Header() {
                       <ul className="pl-4 mt-2 space-y-3 max-h-[250px] overflow-y-auto animate-in fade-in duration-200">
                         {servicesItems.map((item, idx) => {
                           const IconComponent = item.icon;
+                          const isActive = pathname === item.href;
                           return (
                             <li key={idx}>
-                              <Link href={item.href} className="flex items-center gap-3 text-base text-zinc-600 font-medium py-1">
-                                <IconComponent className="w-4 h-4 text-zinc-400 shrink-0" />
+                              <Link 
+                                href={item.href} 
+                                className={cn(
+                                  "flex items-center gap-3 text-base font-medium py-1.5 px-3 rounded-lg transition-colors",
+                                  isActive ? "bg-blue-50 text-blue-600" : "text-zinc-600"
+                                )}
+                              >
+                                <IconComponent className={cn(
+                                  "w-4 h-4 shrink-0",
+                                  isActive ? "text-blue-600" : "text-zinc-400"
+                                )} />
                                 {item.title}
                               </Link>
                             </li>
