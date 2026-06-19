@@ -25,8 +25,8 @@ export function ContactForm() {
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = React.useState(false);
 
   return (
-    <div className="bg-white rounded-xl shadow-xl border border-zinc-100/50 p-8 md:p-12 w-full max-w-4xl mx-auto backdrop-blur-sm bg-white/95 text-left">
-      <h1 className="text-3xl md:text-4xl font-semibold text-center text-zinc-700 mb-12">
+    <div className="bg-white rounded-2xl shadow-xl border border-zinc-100/50 p-5 sm:p-8 md:p-12 w-full max-w-4xl mx-auto backdrop-blur-sm bg-white/95 text-left">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-zinc-700 mb-6 sm:mb-8 md:mb-12">
         Fill in the Details
       </h1>
 
@@ -41,13 +41,13 @@ export function ContactForm() {
               type="text"
               required
               placeholder="Full Name"
-              className="w-full h-12 px-4 border border-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-zinc-800 placeholder:text-zinc-400 bg-white"
+              className="w-full h-12 pl-4 pr-12 border border-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-zinc-800 placeholder:text-zinc-400 bg-white"
             />
             <User className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500 pointer-events-none" />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {/* Email */}
           <div className="space-y-2">
             <label className="text-sm font-semibold text-zinc-800 flex items-center">
@@ -58,7 +58,7 @@ export function ContactForm() {
                 type="email"
                 required
                 placeholder="Email Id"
-                className="w-full h-12 px-4 border border-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-zinc-800 placeholder:text-zinc-400 bg-white"
+                className="w-full h-12 pl-4 pr-12 border border-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-zinc-800 placeholder:text-zinc-400 bg-white"
               />
               <Mail className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500 pointer-events-none" />
             </div>
@@ -69,7 +69,7 @@ export function ContactForm() {
             <label className="text-sm font-semibold text-zinc-800 flex items-center">
               Your Mobile <span className="text-red-500 ml-1 font-bold">*</span>
             </label>
-            <div className="relative flex">
+            <div className="relative flex w-full">
               <div className="relative flex-none">
                 <button
                   type="button"
@@ -92,7 +92,7 @@ export function ContactForm() {
                       className="fixed inset-0 z-30 cursor-default"
                       onClick={() => setIsCountryDropdownOpen(false)}
                     />
-                    <ul className="absolute left-0 top-full mt-1.5 w-64 max-h-60 overflow-y-auto bg-white border border-zinc-200 rounded-md shadow-2xl z-40 py-1.5 animate-in fade-in slide-in-from-top-2 duration-150">
+                    <ul className="absolute left-0 top-full mt-1.5 w-64 max-w-[calc(100vw-40px)] max-h-60 overflow-y-auto bg-white border border-zinc-200 rounded-md shadow-2xl z-40 py-1.5 animate-in fade-in slide-in-from-top-2 duration-150">
                       {countries.map((country, index) => (
                         <li key={index}>
                           <button
@@ -121,7 +121,7 @@ export function ContactForm() {
                 type="tel"
                 required
                 placeholder="Your Mobile"
-                className="flex-1 h-12 px-4 border border-zinc-200 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-zinc-800 placeholder:text-zinc-400 bg-white"
+                className="flex-1 min-w-0 h-12 pl-4 pr-12 border border-zinc-200 rounded-r-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-zinc-800 placeholder:text-zinc-400 bg-white"
               />
               <Smartphone className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500 pointer-events-none" />
             </div>
@@ -136,7 +136,7 @@ export function ContactForm() {
               <select
                 defaultValue=""
                 required
-                className="w-full h-12 px-4 pr-10 appearance-none border border-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-zinc-800 bg-white cursor-pointer"
+                className="w-full h-12 pl-4 pr-14 appearance-none border border-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-zinc-800 bg-white cursor-pointer"
               >
                 <option value="" disabled hidden>Select Service / Requirement</option>
                 <optgroup label="Services" className="font-bold text-slate-900 bg-slate-100">
@@ -155,7 +155,7 @@ export function ContactForm() {
                   <option value="content-writing">Content Writing</option>
                 </optgroup>
                 <optgroup label="Hire Dedicated Developers" className="font-bold text-slate-900 bg-slate-100">
-                  <option value="hire-web-dev">Hire Web Developers</option>
+                  <option value="~hire-web-dev">Hire Web Developers</option>
                   <option value="hire-android-dev">Hire Android Developers</option>
                   <option value="hire-ios-dev">Hire iOS Developers</option>
                   <option value="hire-flutter-dev">Hire Flutter Developers</option>
@@ -211,7 +211,7 @@ export function ContactForm() {
               required
               placeholder="Your Message"
               rows={4}
-              className="w-full p-4 border border-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-zinc-800 placeholder:text-zinc-400 resize-none bg-white"
+              className="w-full p-4 pr-12 border border-zinc-200 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-zinc-800 placeholder:text-zinc-400 resize-none bg-white"
             ></textarea>
             <PenTool className="absolute right-4 bottom-4 w-5 h-5 text-zinc-500 pointer-events-none" />
           </div>
@@ -240,10 +240,10 @@ export function ContactForm() {
         </div>
 
         {/* Submit Button */}
-        <div className="pt-4">
+        <div className="pt-4 flex justify-start">
           <Button
             type="submit"
-            className="bg-gradient-to-r from-[#10b981] to-[#2563eb] hover:opacity-90 text-white font-bold py-7 px-10 rounded-full text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+            className="w-full sm:w-auto bg-gradient-to-r from-[#10b981] to-[#2563eb] hover:opacity-90 text-white font-bold py-6 sm:py-7 px-8 sm:px-10 rounded-full text-base sm:text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all text-center flex justify-center items-center"
           >
             SUBMIT NOW
           </Button>

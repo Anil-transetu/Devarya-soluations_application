@@ -336,6 +336,7 @@ const hireItems = [
 export function Header() {
   const pathname = usePathname();
   const [isQuoteOpen, setIsQuoteOpen] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [mobileCompanyOpen, setMobileCompanyOpen] = React.useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = React.useState(false);
   const [mobileProductsOpen, setMobileProductsOpen] = React.useState(false);
@@ -378,6 +379,15 @@ export function Header() {
           <div className="hidden lg:flex items-center ml-auto">
             <NavigationMenu>
               <NavigationMenuList className="gap-2">
+                {/* Home Link */}
+                <NavigationMenuItem>
+                  <Link href="/" legacyBehavior passHref>
+                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent h-10 px-3.5 text-[20px] font-semibold text-zinc-800 hover:text-blue-600 transition-colors duration-200")}>
+                      Home
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+
                 {/* Company Menu */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="bg-transparent h-10 px-3.5 text-[20px] font-semibold text-zinc-800 hover:text-blue-600 data-[state=open]:text-blue-600 transition-colors duration-200">
@@ -589,7 +599,7 @@ export function Header() {
 
           {/* Mobile Navigation */}
           <div className="lg:hidden flex items-center">
-            <Sheet>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger className="inline-flex items-center justify-center rounded-md text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 h-10 w-10">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle menu</span>
@@ -600,6 +610,15 @@ export function Header() {
                 </div>
                 
                 <nav className="flex flex-col gap-4 mt-6">
+                  {/* Home Link */}
+                  <Link 
+                    href="/" 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="font-bold text-lg text-zinc-800 py-2 border-b border-zinc-100"
+                  >
+                    Home
+                  </Link>
+
                   {/* Company Accordion */}
                   <div className="border-b border-zinc-100 pb-3">
                     <button 
@@ -761,7 +780,10 @@ export function Header() {
                   </Link>
 
                   <div className="mt-8">
-                    <Button onClick={() => setIsQuoteOpen(true)} className="w-full rounded-full border border-blue-600 bg-transparent hover:bg-blue-50 text-blue-600 font-semibold py-6 text-base group shadow-none transition-all">
+                    <Button onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsQuoteOpen(true);
+                    }} className="w-full rounded-full border border-blue-600 bg-transparent hover:bg-blue-50 text-blue-600 font-semibold py-6 text-base group shadow-none transition-all">
                       Get a Quote
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
@@ -775,11 +797,11 @@ export function Header() {
 
       {/* Quote Modal */}
       {isQuoteOpen && (
-        <div className="fixed inset-0 top-[96px] z-40 bg-zinc-900/60 backdrop-blur-sm overflow-y-auto flex justify-center items-start pt-8 pb-24 px-4 sm:px-6">
-          <div className="relative w-full max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-300">
+        <div className="fixed inset-0 z-50 bg-zinc-900/60 backdrop-blur-sm overflow-y-auto flex justify-center items-start pt-16 pb-24 px-4 sm:px-6">
+          <div className="relative w-full max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-300 mt-8 sm:mt-16">
             <button 
               onClick={() => setIsQuoteOpen(false)}
-              className="absolute -top-4 -right-2 md:-right-6 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center text-zinc-500 hover:text-zinc-900 z-50 transition-colors border border-zinc-100"
+              className="absolute top-3 right-3 md:-top-4 md:-right-6 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center text-zinc-500 hover:text-zinc-900 z-[60] transition-colors border border-zinc-100"
             >
               <X className="w-5 h-5" />
             </button>
