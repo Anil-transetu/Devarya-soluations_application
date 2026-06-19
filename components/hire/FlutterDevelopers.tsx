@@ -1,0 +1,171 @@
+"use client";
+
+import React from "react";
+import { HirePageLayout } from "./HirePageLayout";
+import { Feather, Code, Shield, Zap, Globe, Layers, Settings, Users, Clock, Terminal } from "lucide-react";
+
+export function FlutterDevelopers() {
+  return (
+    <HirePageLayout
+      title="Hire Dedicated Flutter Developers"
+      subtitle="Flutter Platform Experts"
+      heroIcon={Feather}
+      heroDescription="Hire vetted Flutter developers to build beautiful, natively compiled cross-platform applications for iOS, Android, and Web from a single codebase."
+      
+      overviewTitle="High-Performance Cross-Platform App Developers"
+      overviewDescription="At Devarya Solutions, we offer dedicated Flutter developers who help you reduce development costs and time-to-market. Skilled in Dart, Bloc, Provider, and native integration channels, our developers construct cross-platform apps with near-native performance. We manage onboarding, administration, and infrastructure, providing you with senior developer talent that scales."
+      overviewHighlights={[
+        "Expert Dart programmers specializing in the Flutter framework",
+        "Consistent UI styling across diverse iOS and Android screens",
+        "Proficient in state management solutions like Bloc, Provider, and Riverpod",
+        "Experienced in integrating custom platform channels for native APIs",
+        "Reduced codebase size, leading to lower maintenance costs"
+      ]}
+      
+      whyHireTitle="Why Hire Flutter Developers from Devarya Solutions?"
+      whyHireDescription="Leverage single-codebase efficiency to launch your mobile products faster and cheaper."
+      whyHireItems={[
+        {
+          title: "Vetted Cross-Platform Experts",
+          description: "Our developers pass rigorous tests covering UI rendering, database optimization, and cross-platform performance auditing.",
+          icon: Code
+        },
+        {
+          title: "Fast Feature Releases",
+          description: "Utilize Flutter's hot reload to compile updates, deploy features rapidly, and reduce overall time-to-market.",
+          icon: Zap
+        },
+        {
+          title: "Direct Code Access",
+          description: "Monitor developer commits daily. You maintain 100% intellectual property ownership and direct communication access.",
+          icon: Shield
+        }
+      ]}
+      
+      skillsTitle="Flutter Development Skill Matrix"
+      skillsDescription="Our developers possess comprehensive expertise across Dart, state models, and third-party integrations."
+      skills={[
+        {
+          title: "Dart Programming",
+          description: "Writing clean, asynchronous, and typed Dart code for robust and stable application logic.",
+          icon: Code
+        },
+        {
+          title: "UI & Animation Setup",
+          description: "Creating fluid, pixel-perfect interfaces and custom animations using Flutter's high-performance canvas.",
+          icon: Zap
+        },
+        {
+          title: "State Management",
+          description: "Enforcing clean architecture using Riverpod, Bloc, MobX, or Redux state containers.",
+          icon: Settings
+        },
+        {
+          title: "Native Integrations",
+          description: "Writing Kotlin/Swift wrapper channels to hook into native platform sensors, cameras, and SDKs.",
+          icon: Terminal
+        },
+        {
+          title: "Data & Offline Sync",
+          description: "Connecting REST/GraphQL APIs and building offline local storage using Hive and Sqflite.",
+          icon: Layers
+        },
+        {
+          title: "Play & App Store Delivery",
+          description: "Managing deployment scripts, App Store Connect, and Google Play Store launches.",
+          icon: Shield
+        }
+      ]}
+      
+      hiringModelsTitle="Staffing Models Aligned to Your Budget"
+      hiringModelsDescription="Choose the best resource model based on your cross-platform mobile requirements."
+      hiringModels={[
+        {
+          title: "Full-Time Dedicated",
+          description: "A senior Flutter developer working 160 hours per month exclusively for your company. Best for custom app creation.",
+          duration: "Monthly Engagement",
+          icon: Clock,
+          benefits: [
+            "160 Hours/Month dedicated focus",
+            "Direct interaction on Slack/Teams",
+            "Daily updates and git commits",
+            "Full IP ownership"
+          ]
+        },
+        {
+          title: "Part-Time Dedicated",
+          description: "A Flutter developer dedicated for 80 hours per month. Ideal for ongoing maintenance, minor updates, and support.",
+          duration: "Flexible Terms",
+          icon: Clock,
+          benefits: [
+            "80 Hours/Month dedicated focus",
+            "Slack/Teams communication",
+            "Weekly sprint planning",
+            "Easily scale up to full-time"
+          ]
+        },
+        {
+          title: "Hourly Contract",
+          description: "Hire a Flutter developer on a flexible hourly model. Best for bug fixes, integrations, or short consulting contracts.",
+          duration: "Hourly Billing",
+          icon: Clock,
+          benefits: [
+            "Billing based on hours worked",
+            "Detailed timesheet tracking",
+            "Perfect for minor enhancements",
+            "No long-term commitments"
+          ]
+        }
+      ]}
+      
+      processTitle="Getting Started"
+      processDescription="Hire a qualified Flutter developer in four simple steps."
+      processSteps={[
+        {
+          title: "Submit App Scope",
+          description: "Outline your application features, target platforms (iOS/Android), and contract timeline."
+        },
+        {
+          title: "Review Shortlisted Resumes",
+          description: "Evaluate developer profiles handpicked to match your application requirements."
+        },
+        {
+          title: "Conduct Interviews",
+          description: "Engage with selected developers in technical and communication evaluation calls."
+        },
+        {
+          title: "Developer Onboarding",
+          description: "Grant project tool access, sign NDAs, set up communication, and begin development."
+        }
+      ]}
+      
+      technologiesTitle="Flutter Tech Stack & Tools"
+      technologies={[
+        { name: "Flutter & Dart" },
+        { name: "Bloc & Riverpod" },
+        { name: "Hive & SQLite" },
+        { name: "Codemagic & Fastlane" },
+        { name: "Firebase Suite" },
+        { name: "Git & GitHub" }
+      ]}
+      
+      faqs={[
+        {
+          question: "Does one Flutter developer build for both iOS and Android?",
+          answer: "Yes. Flutter utilizes a single codebase, meaning a single developer can compile and maintain the application for both iOS and Android, drastically reducing your costs."
+        },
+        {
+          question: "Can your developers integrate native SDKs into Flutter?",
+          answer: "Yes. Our Flutter developers write custom Platform Channels in Kotlin (Android) and Swift (iOS) to integrate any native libraries or device features."
+        },
+        {
+          question: "How do you handle developer communication and timezone gaps?",
+          answer: "We ensure our developers work with an overlap of at least 4 hours with your local working hours, and we communicate using Slack, Teams, and standard email."
+        }
+      ]}
+      
+      ctaTitle="Hire Vetted Flutter Developers"
+      ctaDescription="Launch your mobile app on iOS and Android simultaneously. Contact Devarya Solutions today to hire experienced Flutter engineers."
+    />
+  );
+}
