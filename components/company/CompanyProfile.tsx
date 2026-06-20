@@ -80,26 +80,26 @@ export function CompanyProfile() {
   ];
 
   const technologies = [
-    "Next.js", "React Native", "Flutter", "Kotlin & Jetpack Compose", "Swift & SwiftUI",
+    "Next.js", "TypeScript","React Native", "Flutter", "Kotlin & Jetpack Compose", "Swift & SwiftUI",
     "Node.js", "Python & Django", "PHP Laravel", "PostgreSQL", "MongoDB", "AWS", "Google Cloud"
   ];
 
   const achievements = [
     {
-      metric: "50+",
-      label: "Custom Projects Delivered"
+      metric: "Direct",
+      label: "Founder-Led Collaboration"
     },
     {
-      metric: "98%",
-      label: "Client Retention Rate"
+      metric: "Agile",
+      label: "Sprint-Based Delivery"
     },
     {
-      metric: "15+",
-      label: "Global Industries Served"
+      metric: "100%",
+      label: "IP & Code Ownership"
     },
     {
-      metric: "24/7",
-      label: "SLA Technical Support"
+      metric: "Modern",
+      label: "Next-Gen Tech Blueprint"
     }
   ];
 

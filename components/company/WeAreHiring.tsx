@@ -49,11 +49,11 @@ export function WeAreHiring() {
 
   const jobs = [
     {
-      title: "Senior Full-Stack Developer",
+      title: "Junior Full-Stack Developer",
       department: "Engineering",
       location: "Remote (India)",
       type: "Full-Time",
-      experience: "5+ Years",
+      experience: "1+ Years",
       description: "Lead the frontend and backend architectures of custom SaaS applications using Next.js, Node.js, and SQL databases."
     },
     {
@@ -100,7 +100,7 @@ export function WeAreHiring() {
     },
     {
       question: "What hardware setup is provided?",
-      answer: "We supply our engineers with a high-end development laptop (such as Apple MacBook Pro or equivalent Windows machine) alongside standard accessories."
+      answer: "We supply our engineers with a high-end development laptop (High-end computing devices for testers and developers.) alongside standard accessories."
     },
     {
       question: "How long does the hiring process take?",
@@ -371,11 +371,11 @@ export function WeAreHiring() {
               Ready to Join Devarya Solutions?
             </h2>
             <p className="text-zinc-500 max-w-2xl mx-auto text-base">
-              Submit your details, select requirement "Hire Dedicated Developers" (or list it in Message), and paste your resume link. We'll reach out within 24 hours.
+              Submit your details, select requirement "Hire Dedicated Developers" (or list it in Message), and attach your resume. We'll reach out within 24 hours.
             </p>
           </div>
           
-          <ContactForm />
+          <ContactForm showResumeUpload={true} />
         </div>
       </section>
 

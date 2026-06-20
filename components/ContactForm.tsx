@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { User, Mail, Smartphone, Globe, Info, PenTool, ChevronDown } from "lucide-react";
+import { User, Mail, Smartphone, Globe, Info, PenTool, ChevronDown, UploadCloud, X, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const countries = [
@@ -20,9 +20,61 @@ const countries = [
   { name: "Bahrain", code: "+973", flag: "bh" }
 ];
 
-export function ContactForm() {
+interface ContactFormProps {
+  showResumeUpload?: boolean;
+}
+
+export function ContactForm({ showResumeUpload = false }: ContactFormProps) {
   const [selectedCountry, setSelectedCountry] = React.useState(countries[0]);
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = React.useState(false);
+  const [resumeFile, setResumeFile] = React.useState<File | null>(null);
+  const [isDragActive, setIsDragActive] = React.useState(false);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setResumeFile(e.target.files[0]);
+    }
+  };
+
+  const handleClearFile = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setResumeFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setIsDragActive(true);
+    } else if (e.type === "dragleave") {
+      setIsDragActive(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragActive(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      const file = e.dataTransfer.files[0];
+      const validTypes = [
+        "application/pdf",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+      ];
+      const extension = file.name.split('.').pop()?.toLowerCase();
+      if (validTypes.includes(file.type) || ['pdf', 'doc', 'docx'].includes(extension || '')) {
+        setResumeFile(file);
+      } else {
+        alert("Please upload a PDF, DOC, or DOCX file.");
+      }
+    }
+  };
 
   return (
     <div className="bg-white rounded-2xl shadow-xl border border-zinc-100/50 p-5 sm:p-8 md:p-12 w-full max-w-4xl mx-auto backdrop-blur-sm bg-white/95 text-left">
@@ -217,27 +269,69 @@ export function ContactForm() {
           </div>
         </div>
 
-        {/* ReCAPTCHA Checkbox placeholder */}
-        <div className="flex items-center">
-          <div className="border border-zinc-300 rounded-sm bg-zinc-50 p-4 flex items-center justify-between w-64 shadow-sm">
-            <div className="flex items-center gap-3">
+        {/* Attach Resume */}
+        {showResumeUpload && (
+          <div className="space-y-2">
+            <label className="text-sm font-semibold text-zinc-800 flex items-center">
+              Attach Resume <span className="text-zinc-500 font-normal ml-2">(Optional - PDF, DOC, DOCX)</span>
+            </label>
+            <div
+              onDragEnter={handleDrag}
+              onDragOver={handleDrag}
+              onDragLeave={handleDrag}
+              onDrop={handleDrop}
+              onClick={() => fileInputRef.current?.click()}
+              className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition-all ${
+                isDragActive
+                  ? "border-blue-500 bg-blue-50/30"
+                  : resumeFile
+                  ? "border-emerald-500 bg-emerald-50/10"
+                  : "border-zinc-200 hover:border-blue-500 bg-zinc-50/50 hover:bg-blue-50/10"
+              }`}
+            >
               <input
-                type="checkbox"
-                required
-                className="w-6 h-6 border-zinc-300 rounded text-blue-600 focus:ring-blue-500 cursor-pointer"
+                ref={fileInputRef}
+                type="file"
+                accept=".pdf,.doc,.docx"
+                onChange={handleFileChange}
+                className="hidden"
               />
-              <span className="text-sm text-zinc-700 font-medium">I'm not a robot</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <img
-                src="https://www.gstatic.com/recaptcha/api2/logo_48.png"
-                alt="reCAPTCHA"
-                className="w-8 h-8 opacity-80"
-              />
-              <span className="text-[10px] text-zinc-500 font-medium">reCAPTCHA</span>
+              {resumeFile ? (
+                <div className="flex items-center justify-between bg-white border border-emerald-100 rounded-lg p-3 shadow-sm animate-in fade-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg">
+                      <FileText className="w-6 h-6 shrink-0" />
+                    </div>
+                    <div className="text-left min-w-0">
+                      <p className="text-sm font-semibold text-zinc-800 truncate">
+                        {resumeFile.name}
+                      </p>
+                      <p className="text-xs text-zinc-500">
+                        {(resumeFile.size / (1024 * 1024)).toFixed(2)} MB
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleClearFile}
+                    className="p-1.5 hover:bg-zinc-100 text-zinc-400 hover:text-zinc-600 rounded-full transition-colors cursor-pointer"
+                    title="Remove file"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center gap-2">
+                  <UploadCloud className="w-10 h-10 text-zinc-400 animate-pulse duration-[3000ms]" />
+                  <div className="text-sm font-medium text-zinc-700">
+                    <span className="text-blue-600 hover:underline">Click to upload</span> or drag and drop
+                  </div>
+                  <p className="text-xs text-zinc-500">PDF, DOC, DOCX up to 5MB</p>
+                </div>
+              )}
             </div>
           </div>
-        </div>
+        )}
 
         {/* Submit Button */}
         <div className="pt-4 flex justify-start">
