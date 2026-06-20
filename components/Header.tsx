@@ -395,25 +395,7 @@ export function Header() {
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="container mx-auto px-4 md:px-8 lg:px-12 py-8">
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <li>
-                          <Link href="/about" className="flex items-center gap-3 hover:bg-slate-50 hover:text-blue-600 rounded-xl p-3 transition-all text-[17px] text-zinc-700 font-semibold group">
-                            <Info className="w-5 h-5 text-zinc-400 group-hover:text-blue-600 transition-colors" />
-                            <div className="flex flex-col">
-                              <span>About Us</span>
-                              <span className="text-xs text-zinc-400 font-normal">Learn who we are</span>
-                            </div>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/team" className="flex items-center gap-3 hover:bg-slate-50 hover:text-blue-600 rounded-xl p-3 transition-all text-[17px] text-zinc-700 font-semibold group">
-                            <Users className="w-5 h-5 text-zinc-400 group-hover:text-blue-600 transition-colors" />
-                            <div className="flex flex-col">
-                              <span>Our Team</span>
-                              <span className="text-xs text-zinc-400 font-normal">Meet our experts</span>
-                            </div>
-                          </Link>
-                        </li>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 max-w-2xl gap-6">
                         <li>
                           <Link href="/profile" className="flex items-center gap-3 hover:bg-slate-50 hover:text-blue-600 rounded-xl p-3 transition-all text-[17px] text-zinc-700 font-semibold group">
                             <FileText className="w-5 h-5 text-zinc-400 group-hover:text-blue-600 transition-colors" />
@@ -427,7 +409,7 @@ export function Header() {
                           <Link href="/careers" className="flex items-center gap-3 hover:bg-slate-50 hover:text-blue-600 rounded-xl p-3 transition-all text-[17px] text-zinc-700 font-semibold group">
                             <Briefcase className="w-5 h-5 text-zinc-400 group-hover:text-blue-600 transition-colors" />
                             <div className="flex flex-col">
-                              <span>We Are Hiring?</span>
+                              <span>We Are Hiring</span>
                               <span className="text-xs text-zinc-400 font-normal">Join our growing team</span>
                             </div>
                           </Link>
@@ -631,23 +613,13 @@ export function Header() {
                     {mobileCompanyOpen && (
                       <ul className="pl-4 mt-2 space-y-3 animate-in fade-in duration-200">
                         <li>
-                          <Link href="/about" className="flex items-center gap-3 text-base text-zinc-600 font-medium py-1">
-                            <Info className="w-4 h-4 text-zinc-400" /> About Us
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="/team" className="flex items-center gap-3 text-base text-zinc-600 font-medium py-1">
-                            <Users className="w-4 h-4 text-zinc-400" /> Our Team
-                          </Link>
-                        </li>
-                        <li>
                           <Link href="/profile" className="flex items-center gap-3 text-base text-zinc-600 font-medium py-1">
                             <FileText className="w-4 h-4 text-zinc-400" /> Company Profile
                           </Link>
                         </li>
                         <li>
                           <Link href="/careers" className="flex items-center gap-3 text-base text-zinc-600 font-medium py-1">
-                            <Briefcase className="w-4 h-4 text-zinc-400" /> We Are Hiring?
+                            <Briefcase className="w-4 h-4 text-zinc-400" /> We Are Hiring
                           </Link>
                         </li>
                       </ul>

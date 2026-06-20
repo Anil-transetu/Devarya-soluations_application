@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { ContactForm } from "@/components/ContactForm";
 import { Check, ChevronDown, ChevronUp, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -377,12 +378,7 @@ export function ServicePageLayout({
         </div>
       </section>
 
-      {/* Clean elegant sub-footer */}
-      <footer className="py-8 bg-slate-950 text-zinc-500 border-t border-slate-900 text-center text-xs">
-        <div className="container mx-auto px-4">
-          <p>© 2026 Devarya Solutions Private Limited. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
